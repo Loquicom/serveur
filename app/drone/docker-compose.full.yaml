@@ -1,0 +1,70 @@
+version: '3.3'
+
+services:
+  drone-server-github:
+    container_name: "drone-github"
+    image: drone/drone
+    ports:
+      - "3123:80"
+    volumes:
+      - /opt/drone/data/github:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    environment:
+      - DRONE_GITHUB_SERVER=https://github.com
+      - DRONE_GITHUB_CLIENT_ID=<github-client-id>
+      - DRONE_GITHUB_CLIENT_SECRET=<github-client-secret>
+      - DRONE_RPC_SECRET=<drone-github-rpc-secret>
+      - DRONE_SERVER_HOST=<github-host>
+      - DRONE_SERVER_PROTO=https
+      - DRONE_USER_FILTER=<github-username>
+      - DRONE_USER_CREATE=username:<github-username>,admin:true
+      - DRONE_LOGS_TRACE=false
+      - DRONE_LOGS_PRETTY=true
+      - DRONE_LOGS_COLOR=true
+
+  drone-runner-docker-github:
+    container_name: "drone-github-docker"
+    image: drone/drone-runner-docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    environment:
+      - DRONE_RPC_PROTO=http
+      - DRONE_RPC_HOST=drone-github
+      - DRONE_RPC_SECRET=<drone-github-rpc-secret>
+    depends_on:
+      - "drone-server-github"
+
+  drone-server-gogs:
+    container_name: "drone-gogs"
+    image: drone/drone
+    ports:
+      - "3321:80"
+    volumes:
+      - /opt/drone/data/gogs:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    environment:
+      - DRONE_GOGS_SERVER=<gogs-server>
+      - DRONE_RPC_SECRET=<drone-gogs-rpc-secret>
+      - DRONE_SERVER_HOST=<gogs-host>
+      - DRONE_SERVER_PROTO=https
+      - DRONE_USER_FILTER=<gogs-username>
+      - DRONE_USER_CREATE=username:<gogs-username>,admin:true
+      - DRONE_LOGS_TRACE=false
+      - DRONE_LOGS_PRETTY=true
+      - DRONE_LOGS_COLOR=true
+
+  drone-runner-docker-gogs:
+    container_name: "drone-gogs-docker"
+    image: drone/drone-runner-docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    environment:
+      - DRONE_RPC_PROTO=http
+      - DRONE_RPC_HOST=drone-gogs
+      - DRONE_RPC_SECRET=<drone-gogs-rpc-secret>
+    depends_on:
+      - "drone-server-gogs"

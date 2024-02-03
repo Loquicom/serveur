@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ "$#" -lt 2 ]; then
+    echo "Paramètres absents, merci d'indiquer le nom du site et le dossier avec les clefs/conf"
+    exit
+fi
+
+sudo echo "Gestion du fichier de renouvellement"
+sudo cp "$2/$1.conf" "/etc/letsencrypt/renewal/$1.conf"
+sudo chown root:root "/etc/letsencrypt/renewal/$1.conf"
+sudo chmod 644 "/etc/letsencrypt/renewal/$1.conf"
+echo "Copie des clefs"
+sudo mkdir "/etc/letsencrypt/archive/$1"
+sudo cp "$2/cert.pem" "/etc/letsencrypt/archive/$1/cert1.pem"
+sudo cp "$2/chain.pem" "/etc/letsencrypt/archive/$1/chain1.pem"
+sudo cp "$2/fullchain.pem" "/etc/letsencrypt/archive/$1/fullchain1.pem"
+sudo cp "$2/privkey.pem" "/etc/letsencrypt/archive/$1/privkey1.pem"
+echo "Modification des droits"
+sudo chown -R root:root "/etc/letsencrypt/archive/$1"
+sudo chmod -R 644 "/etc/letsencrypt/archive/$1"
+sudo chmod 600 "/etc/letsencrypt/archive/$1/privkey1.pem"
+echo "Création des liens symboliques"
+sudo mkdir "/etc/letsencrypt/live/$1"
+sudo ln -s "/etc/letsencrypt/archive/$1/cert1.pem" "/etc/letsencrypt/live/$1/cert.pem"
+sudo ln -s "/etc/letsencrypt/archive/$1/chain1.pem" "/etc/letsencrypt/live/$1/chain.pem"
+sudo ln -s "/etc/letsencrypt/archive/$1/fullchain1.pem" "/etc/letsencrypt/live/$1/fullchain.pem"
+sudo ln -s "/etc/letsencrypt/archive/$1/privkey1.pem" "/etc/letsencrypt/live/$1/privkey.pem"
+echo "Terminé"

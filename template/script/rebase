@@ -1,0 +1,41 @@
+#!/bin/bash
+
+
+# --- Fonctions ---
+
+# Verification que l'on est dans un repertoire git
+function is_git_repositiry() {
+	local result=$(git -C ./ rev-parse &> /dev/null || echo "no")
+	if [ "$result" == "" ] 
+	then
+		echo 1
+	else
+		echo 0
+	fi
+
+}
+
+
+# --- Code ---
+
+# Verification argument
+if [ "$1" == "" ] 
+then
+	echo "Usage $0 {<commit-behind>|continue}"
+	exit 1
+fi
+
+# Verification du repertoire
+if [ $(is_git_repositiry) == 0 ]
+then
+	echo "Le repertoire n'est pas un repertoire git"
+	exit 2
+fi
+
+# Applique la bonne commande
+if [ "$1" == "continue" ] || [ "$1" == "c" ]
+then
+	git rebase --continue
+else
+	git rebase -i HEAD~$1
+fi

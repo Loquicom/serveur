@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" == "yes" ]; then 
+    sudo sed -i -r 's/.*PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+elif [ "$1" == "no" ]; then
+    sudo sed -i -r 's/.*PasswordAuthentication.*/PasswordAuthentication no/g' /etc/ssh/sshd_config
+else
+    echo "Usage $0 {yes|no}"
+	exit 1
+fi
+
+sudo systemctl restart sshd

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo chown -R loquicom:loquicom /etc/apache2/sites-available
+sudo chown -R loquicom:loquicom /var/www

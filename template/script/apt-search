@@ -1,0 +1,24 @@
+#!/bin/bash
+
+info() {
+	echo "Search in apt-cache paquet to install"
+	echo "Wrong usage: apt-search <search> [find]"
+	echo "    <search> - Paquet to search"
+	echo "    [find] - Find specific term in result"
+	echo "Exemple: apt-search php sqlite"
+}
+
+if [[ "$#" -eq 1 ]]; then
+ 	# Affichage de l'aide
+ 	if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
+ 		info
+ 		exit
+ 	fi
+ 	# Recherche
+ 	apt-cache search "$1"
+elif [[ "$#" -eq 2 ]]; then
+	# Recherche
+	apt-cache search "$1" | grep "$2"
+else
+	info
+fi 

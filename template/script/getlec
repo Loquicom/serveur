@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ "$#" -lt 1 ]; then
+    echo "Paramètre absent, merci d'indiquer le nom du site"
+    exit
+fi
+
+DIR="$HOME/key/$1"
+if [ "$#" -ge 2 ]; then
+    DIR="$2"
+fi
+
+sudo echo "Création d'un répertoire de sauvegarde"
+mkdir -p $DIR
+sudo cat "/etc/letsencrypt/live/$1/cert.pem" > "$DIR/cert.pem"
+sudo cat "/etc/letsencrypt/live/$1/chain.pem" > "$DIR/chain.pem"
+sudo cat "/etc/letsencrypt/live/$1/fullchain.pem" > "$DIR/fullchain.pem"
+sudo cat "/etc/letsencrypt/live/$1/privkey.pem" > "$DIR/privkey.pem"
+sudo cp "/etc/letsencrypt/renewal/$1.conf" "$DIR/$1.conf"
+echo "Fichier disponible dans $DIR"

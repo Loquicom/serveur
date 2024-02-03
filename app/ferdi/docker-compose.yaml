@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+  ferdi-server:
+    image: ferdium/ferdium-server:latest
+    container_name: ferdi
+    ports:
+      - "3333:3333"
+    volumes:
+      - /opt/ferdi/data:/data
+      - /opt/ferdi/recipes:/app/recipes
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - APP_URL=<website-url>
+      - DB_CONNECTION=sqlite
+      - DB_HOST=127.0.0.1
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_DATABASE=ferdi
+      - DB_SSL=false
+      - MAIL_CONNECTION=smtp
+      - SMTP_HOST=<smtp-host>
+      - SMTP_PORT=<smtp-port>
+      - MAIL_SSL=true
+      - MAIL_USERNAME=<smtp-login>
+      - MAIL_PASSWORD=<smtp-password>
+      - MAIL_SENDER=<smtp-sender>
+      - IS_CREATION_ENABLED=true
+      - IS_DASHBOARD_ENABLED=true
+      - IS_REGISTRATION_ENABLED=true
+      - CONNECT_WITH_FRANZ=true
+      - DATA_DIR=/data
+    

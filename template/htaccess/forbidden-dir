@@ -1,0 +1,4 @@
+RewriteEngine on
+
+# Acces to folder test send 403 Forbidden 
+RewriteRule ^test/?$ - [F,L]

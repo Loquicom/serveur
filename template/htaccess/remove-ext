@@ -1,0 +1,5 @@
+RewriteEngine on
+
+# Use php file without extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
