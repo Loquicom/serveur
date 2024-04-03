@@ -31,3 +31,4 @@ Le dossier `template` contient des fichiers d'exemple réutilisables pour diffé
 ## Todo one day
 
 - Serveur bitwarden
+- [Service systemd](https://abhinand05.medium.com/run-any-executable-as-systemd-service-in-linux-21298674f66f)
