@@ -32,3 +32,4 @@ Le dossier `template` contient des fichiers d'exemple réutilisables pour diffé
 
 - Serveur bitwarden
 - [Service systemd](https://abhinand05.medium.com/run-any-executable-as-systemd-service-in-linux-21298674f66f)
+- VPN Wireguard ou OpenVPN avec PiVPN
