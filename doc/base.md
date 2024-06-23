@@ -235,6 +235,19 @@ Gestion des redémarrage : https://docs.docker.com/config/containers/start-conta
 
 Mise à jour automatique : https://containrrr.dev/watchtower/
 
+Mise à jour manuelle d'un conteneur avec docker-compose :
+
+```bash
+# Coupe le conteneur actuel et le supprime (attention les données non stockées dans un volume sont perdues)
+docker-compose down
+# Récupère la dernière version de l'image
+docker-compose pull
+# Lance le conteneur en foçant l'utilisation de la nouvelle image (ajouté le -d pour le faire en arrière plan)
+docker-compose up --force-recreate --build [-d]
+# Supprime l'ancienne image
+docker image prune -f
+```
+
 #### Gestion multi terminaux
 
 Screen permet d'ouvrir plusieurs terminaux dans une seule console, permet notamment de lancer un serveur de le détacher et d'y retourner simplement plus tard pour saisir des commandes ou voir les logs : https://doc.ubuntu-fr.org/screen
