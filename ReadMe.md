@@ -4,15 +4,15 @@ Ce dépôt a pour but de contenir toutes la documentation nécessaire pour l'ins
 
 ## Guides d'installation
 
-- [Installation des composants de base](./doc/base.md) 
-- [Installation d'un serveur LAMP / LAPP](./doc/lamp.md)
-- [Installation d'un serveur Git](./doc/git.md)
-- [Installation d'un WebDav](./doc/webdav.md)
-- [Installation d'un serveur d'envoi d'email](./doc/email.md)
+La documentation est découpée en plusieurs catégorie, chaque catégorie possède son index
+
+- [Initialisation et installation d'un serveur](./doc/initialisation)
+- [Installation et configuration d'un serveur web et d'une base de données](./doc/serveur_web)
+- [Installation et configuration de différentes applications](./doc/application)
 
 ## Applications
 
-Le dossier `app` contient les fichiers docker-compose et de configuration pour différentes applications :
+Le dossier `app` contient les fichiers docker-compose et de configuration pour différentes applications. Certaines applications possèdent une documentation détaillé pour leur mise en place, pour ceci ce référer aux guides d'installation
 
 - Drone (Outil de CI/CD)
 - Ferdium
@@ -21,7 +21,7 @@ Le dossier `app` contient les fichiers docker-compose et de configuration pour d
 
 ## Template
 
-Le dossier `template` contient des fichiers d'exemple réutilisables pour différents services :
+Le dossier `template` contient des fichiers d'exemple réutilisables pour différents services
 
 - Vhost Apache
 - .htaccess
