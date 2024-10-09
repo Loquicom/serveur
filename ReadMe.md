@@ -6,8 +6,8 @@ Ce dépôt a pour but de contenir toutes la documentation nécessaire pour l'ins
 
 La documentation est découpée en plusieurs catégorie, chaque catégorie possède son index
 
-- [Initialisation et installation d'un serveur](./doc/initialisation)
-- [Installation et configuration d'un serveur web et d'une base de données](./doc/serveur_web)
+- [Configuration d'un linux pour en faire un serveur](./doc/initialisation)
+- [Installation et configuration d'un serveur web et d'une base de données](./doc/serveur)
 - [Installation et configuration de différentes applications](./doc/application)
 
 ## Applications
@@ -33,3 +33,6 @@ Le dossier `template` contient des fichiers d'exemple réutilisables pour diffé
 - Serveur bitwarden
 - [Service systemd](https://abhinand05.medium.com/run-any-executable-as-systemd-service-in-linux-21298674f66f)
 - VPN Wireguard ou OpenVPN avec PiVPN
+- Ajouter documentation Webdav Apache
+- Adapter documentation Crowdsec au nouveau format
+- Faire documentation Caddy
