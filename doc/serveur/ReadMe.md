@@ -11,6 +11,7 @@ Plusieurs serveurs web sont documentés, il faut en installer qu'un seul. Pour l
   - [Caddy](./caddy.md)
 - Sécurité
   - [Crowdsec](./crowdsec.md)
+  - [Certbot](./certbot.md)
 - SGBD
   - [MySQL](./mysql.md)
   - [MariaDB](./mariadb.md)
