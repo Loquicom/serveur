@@ -1,0 +1,22 @@
+#!/bin/bash
+
+info() {
+	echo "Enable or disable edition on addy files"
+	echo "Wrong usage: ecaddy <boolean>"
+}
+
+if [[ "$#" -eq 0 ]]; then
+	info
+	exit
+fi
+
+if [[ "$1" == "true" ]]; then
+	sudo chown -R $USER:$USER /etc/caddy
+	sudo chown -R $USER:$USER /var/www
+elif [[ "$1" == "false" ]]; then
+	sudo chown -R root:root /etc/caddy
+	sudo chown -R caddy:caddy /var/www
+	sudo chmod -R 775 /var/www
+else
+	info
+fi

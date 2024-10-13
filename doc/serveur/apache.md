@@ -20,10 +20,10 @@ sudo a2enmod ssl
 sudo a2enmod proxy
 sudo a2enmod proxy_http
 sudo a2enmod security2
-# Permet la lecture/modification du réportoire www à l'utilisateur apache et du serveur
+# Permet la lecture/modification du réportoire www à l'utilisateur apache
 sudo chown -R www-data:www-data /var/www
 sudo chmod -R 775 /var/www
-sudo usermod -a -G www-data <user>
+sudo usermod -a -G www-data $USER
 # Redémmarer le serveur
 sudo systemctl restart apache2
 ```

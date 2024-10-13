@@ -1,0 +1,27 @@
+{  
+    # Décommenter la ligne si besoins de logger plus d'informations
+    # debug
+    
+    log default {  
+        format console  
+        output file /var/log/caddy/system.log  
+        exclude http.log.access  
+    }
+    
+    # Configuration certificat SSL
+    # email admin@email.com
+    
+    # Activer ces lignes pour un serveur en local qui n'a pas accès à internet
+    # local_certs
+    # auto_https disable_redirects
+}
+
+import config/*  
+import sites/*
+
+:443, :80 {
+    # Catcher final qui refuse l'accès si aucun site ne correspond
+    respond "Access denied" 403 {
+        close
+    }
+}

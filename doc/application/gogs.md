@@ -7,7 +7,7 @@ Gogs est un serveur git auto-hébergeable léger avec une interface web pour le 
 ```bash
 # Création du dossier
 sudo mkdir /opt/gogs
-sudo chown <user>:<group> /opt/gogs
+sudo chown $USER:$USER /opt/gogs
 # Création du dossier pour les données
 mkdir /opt/gogs/data
 # Création du fichier de configuration docker
