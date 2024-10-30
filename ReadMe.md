@@ -36,3 +36,4 @@ Le dossier `template` contient des fichiers d'exemple réutilisables pour diffé
 - Ajouter documentation Webdav Apache
 - Adapter documentation Crowdsec au nouveau format
 - Faire documentation Caddy
+- [Docker compose V2](https://docs.docker.com/compose/releases/migrate/#how-do-i-switch-to-compose-v2)
