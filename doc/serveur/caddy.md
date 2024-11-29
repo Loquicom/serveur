@@ -449,6 +449,13 @@ example.com {
 
 Pour faire du load-balancing il suffit de mettre plusieurs URL à la suite, par exemple `reverse_proxy node1:80 node2:80 node3:80`
 
+### Webdav
+
+TODO
+
+- https://github.com/mholt/caddy-webdav
+- https://marko.euptera.com/posts/caddy-webdav.html
+
 ## Authentification basique
 
 Pour ajouter une authentification basique par HTTP il faut dans un premier temps hasher les mots de passe des utilisateur, pour faire cela caddy dispose d'un outil
