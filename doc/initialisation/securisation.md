@@ -1,8 +1,8 @@
-## Mise à jour et sécurisation
+# Mise à jour et sécurisation
 
 Procédure pour mettre à jour et sécuriser un serveur linux Debian vierge
 
-### Mise à jour
+## Mise à jour
 
 Renomme le serveur et met à jour les logiciels présents dessus
 
@@ -19,7 +19,7 @@ sudo apt upgrade
 sudo shutdown -r now
 ```
 
-### Maj automatique
+## Maj automatique
 
 Paramètre les mise à jour automatique
 
@@ -31,19 +31,44 @@ sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
   #   Unattended-Upgrade::Automatic-Reboot "true";
 ```
 
-### Sécurisation
+## Sécurisation
 
 Création d'un nouvel utilisateur et modification de la configuration SSH
 
+### Configuration SSH
+
+La modification de la configuration SHH est un peu différente en fonction de la version d'Ubuntu utilisée. Dans un premier temps peut importe la version faire les modifications suivantes :
+
 ```bash
-# Changement port ssh
 sudo nano /etc/ssh/sshd_config
   # Modifier le numéro sur la ligne : Port 22 (décommenter si besoins)
   # Mettre PermitRootLogin à la valeur no (décommenter si besoins)
   # Mettre PubkeyAuthentication yes
   # Mettre PasswordAuthentication à la valeur no
+```
+
+**Pour les versions 22.04 LTS et antérieur**
+
+```bash
+#Rédemarrer le service et relancer la connexion SSH 
 sudo systemctl restart sshd
-# Relancer la connexion SSH
+```
+
+**Pour les versions 22.10 (ou 24.04 pour les LTS) et suivantes**
+
+```bash
+sudo systemctl edit ssh.socket
+  # Ajouter les 3 lignes suivantes en début de fichier avec le nouveau numéro de port :
+  # [Socket]
+  # ListenStream=
+  # ListenStream=<num-port>
+#Rédemarrer le service et relancer la connexion SSH 
+sudo systemctl restart ssh
+```
+
+### Création d'un nouvel utilisateur
+
+```bash
 # Création d'un nouvel utilisateur (et d'un groupe avec le même nom)
 sudo adduser <user>
 sudo usermod -aG sudo <user>
@@ -52,8 +77,7 @@ sudo cp $HOME/.ssh/authorized_keys /home/<user>/.ssh
 # Aller sur le nouveau compte (il possible de basculer avec la commande : su - <user>)
 # Les commandes suivantes sont à faire sur le nouveau compte
 sudo visudo
-  # Ajouter la ligne suivante avant la derniere ligne du fichier
-  #  <user> ALL=(ALL) NOPASSWD: ALL
+  # Ajouter la ligne suivante avant la derniere ligne du fichier  <user> ALL=(ALL) NOPASSWD: ALL
 sudo chown -R <user>:<group> $HOME/.ssh
 sudo systemctl restart sshd
 # Deconnexion reconnexion (normalement sans mot de passe)
@@ -68,7 +92,7 @@ nano $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-### Firewall
+## Firewall
 
 Installation est paramétrage d'un firewall
 
@@ -85,7 +109,7 @@ sudo ufw status verbose
   # Permet de voir les regles en place
 ```
 
-### Liens
+## Liens
 
 - Mise à jour automatique
   - https://www.cyberciti.biz/faq/how-to-set-up-automatic-updates-for-ubuntu-linux-18-04/
@@ -95,3 +119,5 @@ sudo ufw status verbose
 - Firewall
   - https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-20-04-fr
   - https://doc.ubuntu-fr.org/ufw
+- Port SSH
+  - https://lafibre.info/serveur-linux/changer-le-port-de-ssh-ubuntu-24-04/

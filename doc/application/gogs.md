@@ -155,7 +155,7 @@ docker exec -it <container_id> bash
 # Dans le container
 mkdir /data/tmp
 cd /data
-USER=git /app/gogs/gogs restore --database-only --from="<backup_name>" -t /data/tmp -c data/gogs/conf/app.ini
+USER=git /app/gogs/gogs restore --database-only --from="<backup_name>" -t /data/tmp -c /data/gogs/conf/app.ini
 rm -R /data/tmp
 rm <backup_name>
 exit

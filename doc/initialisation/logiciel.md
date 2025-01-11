@@ -70,7 +70,7 @@ Installation et configuration de NodeJs, de NPM son gestionnaire de paquet et de
 
 ```bash
 # Installation
-sudo apt install -y php nodejs npm
+sudo apt install -y nodejs npm
 # Configuration
 mkdir $HOME/.npm-global
 mkdir $HOME/.node-n

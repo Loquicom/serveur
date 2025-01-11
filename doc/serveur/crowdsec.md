@@ -26,7 +26,6 @@ sudo cscli collections install crowdsecurity/sshd
 # Collections pour une machine utilsée comme serveur web
 sudo cscli collections install crowdsecurity/base-http-scenarios
 sudo cscli collections install crowdsecurity/http-cve
-sudo cscli collections install crowdsecurity/http-dos # Optionnel
 # Collection pour l'application de serveur web utilisée sur la machine (il faut installer uniquement celle utilisée)
 sudo cscli collections install crowdsecurity/apache2 # Apache2
 sudo cscli collections install crowdsecurity/nginx # Nginx
@@ -56,7 +55,7 @@ Le bouncer Firewall ajoute les IP bloquées directement dans le pare-feu pour bl
 
 ```bash
 # Installation
-sudo apt-get install -y crowdsec-firewall-bouncer-iptables
+sudo apt-get install -y crowdsec-firewall-bouncer
 ```
 
 Si le bouncer ne fonctionne plus suite à une mise à jour il suffit de le reinstaller

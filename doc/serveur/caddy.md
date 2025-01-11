@@ -67,9 +67,28 @@ xcaddy build \
 
 Une fois l'exécutable de Caddy créer il suffit de lancer pour avoir un serveur web. Cependant pour des raisons pratique (et pour être iso avec l'installation automatique par gestionnaire de paquet) il reste encore quelques étapes pour le rendre vraiment fonctionnel en tant que serveur web.
 
+#### Création d'un utilisateur dédiée
+
+Dans un premier temps nous allons créer un utilisateur et un groupe pout tout ce qui touche à Caddy
+
+```bash
+# Création du groupe
+sudo groupadd --system caddy
+# Création de l'utilisateur
+sudo useradd --system \
+    --gid caddy \
+    --create-home \
+    --home-dir /var/lib/caddy \
+    --shell /usr/sbin/nologin \
+    --comment "Caddy web server" \
+    caddy
+# Ajout de l'utilisateur courrant dans le groupe
+sudo usermod -aG caddy $USER
+```
+
 #### Création des fichiers de configuration
 
-Dans un premier temps nous allons créer les fichiers de configuration de Caddy
+Ensuite nous allons créer les fichiers de configuration de Caddy
 
 ```bash
 # Création des dossier
@@ -170,24 +189,7 @@ Dans le fichier d'exemple il est possible de remplacer `localhost {` par `localh
 
 L'objectif est de créer un service pour permettre la gestion de Caddy et notamment son redémarrage après un reboot par exemple. L'autre avantage est de pouvoir lancer Caddy sans ce soucier des arguments à chaque fois ce qui est utile notamment car nous allons mettre les fichiers de config dans `/etc/caddy`.
 
-Nous allons dans un premier temps devoir créer un groupe et un utilisateur pour Caddy
-
-```bash
-# Création du groupe
-sudo groupadd --system caddy
-# Création de l'utilisateur
-sudo useradd --system \
-    --gid caddy \
-    --create-home \
-    --home-dir /var/lib/caddy \
-    --shell /usr/sbin/nologin \
-    --comment "Caddy web server" \
-    caddy
-# Ajout de l'utilisateur courrant dans le groupe
-sudo usermod -aG caddy $USER
-```
-
-Maintenant nous allons créer le fichier de service :
+Nous allons dans un premier temps nous allons créer le fichier de service :
 
 ```bash
 sudo touch /etc/systemd/system/caddy.service
