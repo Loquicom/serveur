@@ -35,17 +35,18 @@ Mise à jour manuelle d'un conteneur avec docker-compose :
 
 ```bash
 # Coupe le conteneur actuel et le supprime (attention les données non stockées dans un volume sont perdues)
-docker-compose down
+docker compose down
 # Récupère la dernière version de l'image
-docker-compose pull
+docker compose pull
 # Lance le conteneur en foçant l'utilisation de la nouvelle image (ajouté le -d pour le faire en arrière plan)
-docker-compose up --force-recreate --build [-d]
+docker compose up --force-recreate --build [-d]
 # Supprime l'ancienne image
 docker image prune -f
 ```
 
-Sur les versions récentes de docker, docker-compose est devenue un plugin de docker. Pout l'utiliser il faut écrire `docker compose <args>`
+Anciennement, docker compose n'était pas un plugin de docker et pour l'utiliser il fallait écrire `docker-compose <args>`
 
 ### Liens
 
 - https://docs.docker.com/engine/install/linux-postinstall/
+- https://docs.docker.com/compose/releases/migrate/#how-do-i-switch-to-compose-v2
