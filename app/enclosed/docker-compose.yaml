@@ -1,0 +1,14 @@
+services:
+  enclosed:
+    image: corentinth/enclosed
+    container_name: enclosed
+    environment:
+      PUBLIC_IS_AUTHENTICATION_REQUIRED: "true"
+      PUBLIC_DEFAULT_DELETE_NOTE_AFTER_READING: "true"
+      AUTHENTICATION_JWT_SECRET: "<RANDOM STRING>"
+      AUTHENTICATION_USERS: "<USERS SEE ENCLOSED DOCS>"
+    ports:
+      - 8787:8787
+    volumes:
+      - /opt/enclosed/data:/app/.data
+    restart: unless-stopped

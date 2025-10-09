@@ -1,0 +1,17 @@
+services:
+  kutt:
+    image: kutt/kutt:main
+    container_name: kutt
+    restart: unless-stopped
+    volumes:
+       - /opt/kutt/data/db:/var/lib/kutt
+       - /opt/kutt/data/custom:/kutt/custom
+    environment:
+      JWT_SECRET: "<RANDOM STRING>"
+      SITE_NAME: "<NAME>"
+      DEFAULT_DOMAIN: "<URL>"
+      DISALLOW_REGISTRATION: "true"
+      DB_FILENAME: "/var/lib/kutt/data.sqlite"
+      CUSTOM_DOMAIN_USE_HTTPS: "true"
+    ports:
+      - 3080:3000

@@ -1,0 +1,9 @@
+services:
+  mini-qr:
+    image: ghcr.io/lyqht/mini-qr:latest
+    container_name: mini-qr
+    restart: unless-stopped
+    volumes:
+      - /opt/miniqr/html/public:/usr/share/nginx/html/public:ro
+    ports:
+      - 8008:8080

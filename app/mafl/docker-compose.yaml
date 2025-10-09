@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  mafl:
+    container_name: mafl
+    image: hywax/mafl
+    restart: unless-stopped
+    ports:
+      - '3456:3000'
+    volumes:
+      - /opt/mafl/data:/app/data

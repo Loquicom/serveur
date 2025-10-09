@@ -1,0 +1,12 @@
+services:
+  iso:
+    image: coyann/iso:latest
+    container_name: iso
+    ports:
+      - "3333:3000"
+    environment:
+      AUTH_SECRET: "<RANDOM STRING>"
+      AUTH_PASSWORD: "<PASSWORD>"
+    volumes:
+      - /opt/iso/config:/config
+    restart: unless-stopped

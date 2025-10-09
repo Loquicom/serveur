@@ -1,0 +1,105 @@
+title: Loquicom Vault Services
+lang: fr
+services:
+  Auto-hebergement:
+    - title: Webdav
+      description: "Serveur Webdav"
+      link: https://vault.loquico.me/wdav
+      icon:
+        name: flowbite:server-outline
+        wrap: true
+      status:
+        enabled: true
+    - title: Coffre-fort
+      description: "Sécurise les fichiers" 
+      link: https://vault.loquico.me/wdav/vault/files
+      icon:
+        name: icon-park-twotone:file-protection-one
+        wrap: true
+      status:
+        enabled: true
+    - title: OmniTools
+      description: "Divers outils" 
+      link: https://tools.vault.loquico.me
+      icon:
+        name: la:tools
+        wrap: true
+      status:
+        enabled: true
+    - title: Kutt
+      description: "Raccourcisseur d'URL" 
+      link: https://url.vault.loquico.me
+      icon:
+        name: flowbite:link-outline
+        wrap: true
+      status:
+        enabled: true
+    - title: QR Code
+      description: "Créateur/Lecteur de QR Codes" 
+      link: https://qr.vault.loquico.me
+      icon:
+        name: weui:qr-code-filled
+        wrap: true
+      status:
+        enabled: true
+  Externes:
+    - title: Startpage
+      description: "Moteur de recherche"
+      link: https://www.startpage.com
+      icon:
+        name: icons8:search
+        wrap: true
+      status:
+        enabled: true
+    - title: LuxPDF
+      description: "Outils pour les PDF"
+      link: https://luxpdf.com
+      icon:
+        name: uiw:file-pdf
+        wrap: true
+      status:
+        enabled: true
+    - title: Pairdrop
+      description: "Transfert de fichiers"
+      link: https://pairdrop.net
+      icon:
+        name: tabler:file-upload
+        wrap: true
+      status:
+        enabled: true
+    - title: GhostPaste
+      description: "Partage sécurisé de snippets"
+      link: https://ghostpaste.dev/create
+      icon:
+        name: fa7-regular:paste
+        wrap: true
+      status:
+        enabled: true
+    - title: ExcaliDraw
+      description: "Tableau blanc partagé"
+      link: https://excalidraw.com
+      icon:
+        name: flowbite:chalkboard-outline
+        wrap: true
+      status:
+        enabled: true
+  Autre:
+    - type: ip-api
+      options:
+        flagIcon: true
+    - title: Vauklt Backup
+      description: "Backup Webdav et Coffre-fort"
+      link: https://backup.vault.loquico.me
+      icon:
+        name: clarity:backup-line
+        wrap: true
+      status:
+        enabled: true
+    - title: Mafl
+      description: "Documentation Dashboard"
+      link: https://mafl.hywax.space
+      icon:
+        name: f7:doc-text
+        wrap: true
+      status:
+        enabled: true

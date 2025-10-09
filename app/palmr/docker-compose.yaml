@@ -1,0 +1,19 @@
+services:
+  palmr:
+    image: kyantech/palmr:latest
+    container_name: palmr
+    restart: unless-stopped
+    ports:
+      - "5487:5487" # Web interface
+      - "3387:3333" # API (optional)
+    environment:
+      DISABLE_FILESYSTEM_ENCRYPTION: "false"
+      ENCRYPTION_KEY: "<RANDOM 32+ LENGTH STRING>"
+      SECURE_SITE: "true"
+      DEFAULT_LANGUAGE: "fr-FR"
+      NODE_OPTIONS: "--expose-gc"
+    volumes:
+      - palmr_data:/app/server
+ 
+volumes:
+  palmr_data:

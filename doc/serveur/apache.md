@@ -227,6 +227,7 @@ Alias /<URL> /var/www/public
 # Le 2nd paramétre est l'adresse du site
 ProxyRequests Off
 ProxyPreserveHost On
+RedirectMatch ^/<URL>$ /<URL>/
 ProxyPass /<URL>/ http://localhost:<port>/
 ProxyPassReverse /<URL>/ http://localhost:<port>/
 
