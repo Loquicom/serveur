@@ -58,11 +58,13 @@ sudo systemctl restart sshd
 
 ```bash
 sudo systemctl edit ssh.socket
-  # Ajouter les 3 lignes suivantes en début de fichier avec le nouveau numéro de port :
+  # Ajouter les 4 lignes suivantes en début de fichier avec le nouveau numéro de port :
   # [Socket]
   # ListenStream=
   # ListenStream=<num-port>
+  # BindIPv6Only=both #Autorise la connexion en IP V4, si absente sue la connexion en IP V6 est possible
 #Rédemarrer le service et relancer la connexion SSH 
+sudo systemctl restart ssh.socket
 sudo systemctl restart ssh
 ```
 
