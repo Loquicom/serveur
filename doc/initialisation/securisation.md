@@ -78,8 +78,10 @@ sudo mkdir /home/<user>/.ssh
 sudo cp $HOME/.ssh/authorized_keys /home/<user>/.ssh
 # Aller sur le nouveau compte (il possible de basculer avec la commande : su - <user>)
 # Les commandes suivantes sont à faire sur le nouveau compte
-sudo visudo
-  # Ajouter la ligne suivante avant la derniere ligne du fichier  <user> ALL=(ALL) NOPASSWD: ALL
+sudo visudo -f /etc/sudoers.d/<user>
+  # Ajouter la ligne suivante : <user> ALL=(ALL) NOPASSWD: ALL
+  # Il est sinon aussi possible de modifier le fichier de conf globale en faisant : sudo visudo
+  # Puis d'ajouter la ligne suivante avant la derniere ligne du fichier : <user> ALL=(ALL) NOPASSWD: ALL
 sudo chown -R <user>:<group> $HOME/.ssh
 sudo systemctl restart sshd
 # Deconnexion reconnexion (normalement sans mot de passe)
